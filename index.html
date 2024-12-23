@@ -9,7 +9,8 @@
     <script>
         // prompt("say somthing")
         console.log("hello alaa")
-
+        let humanScore = 0
+        let computerScore = 0
         function getComputerChoice(){
             let choice = parseInt(Math.random()*3+1)
             if (choice == 1){
@@ -25,30 +26,43 @@
             let humanChoice = prompt("enter your choice : rock paper scissors")
             return humanChoice
         }
-        let humanScore = 0
-        let computerScore = 0
+
 
         function playRound(humanChoice, computerChoice) {
-         humanChoice = toString(humanChoice).toLowerCase()
+         console.log(humanChoice)
             if(humanChoice == computerChoice){
                 return "it is tie"
             }else if (humanChoice == "rock" && computerChoice == "paper"    ||
                       humanChoice == "scissors" && computerChoice == "rock" ||
                       humanChoice == "paper" && computerChoice == "scissors"  
             ){
+                computerScore++;
                 return `You lose! ${computerChoice} beats  ${humanChoice}`
-                computerScore++
+                
             } else {
+                humanScore++;
                 return `You win! ${humanChoice} beats ${computerChoice}`
-                humanScore++
+                
             }
 
         }
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
 
-        playRound(humanSelection, computerSelection);
 
+
+        function playGame() {
+
+            let rounds = 0
+            while (rounds < 5){
+                rounds++
+                const humanSelection = getHumanChoice();
+                const computerSelection = getComputerChoice();
+                console.log(playRound(humanSelection, computerSelection)) ;
+            }
+            console.log("computer score :" +computerScore)
+            console.log("human score:"+ humanScore)
+    }
+
+    playGame()
     </script>
 </body>
 </html>
