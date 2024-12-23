@@ -17,11 +17,17 @@
             } else if (choice == 2){
                 return "paper"
             } else {
-                return "Scissors"
+                return "scissors"
             }
         }
+        
+        function getHumanChoice(){
+            let humanChoice = prompt("enter your choice : rock paper scissors")
+            return humanChoice
+        }
 
-        console.log(getComputerChoice())
+        console.log(getHumanChoice())
+
     </script>
 </body>
 </html>
