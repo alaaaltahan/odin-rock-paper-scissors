@@ -25,8 +25,29 @@
             let humanChoice = prompt("enter your choice : rock paper scissors")
             return humanChoice
         }
+        let humanScore = 0
+        let computerScore = 0
 
-        console.log(getHumanChoice())
+        function playRound(humanChoice, computerChoice) {
+         humanChoice = toString(humanChoice).toLowerCase()
+            if(humanChoice == computerChoice){
+                return "it is tie"
+            }else if (humanChoice == "rock" && computerChoice == "paper"    ||
+                      humanChoice == "scissors" && computerChoice == "rock" ||
+                      humanChoice == "paper" && computerChoice == "scissors"  
+            ){
+                return `You lose! ${computerChoice} beats  ${humanChoice}`
+                computerScore++
+            } else {
+                return `You win! ${humanChoice} beats ${computerChoice}`
+                humanScore++
+            }
+
+        }
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+
+        playRound(humanSelection, computerSelection);
 
     </script>
 </body>
