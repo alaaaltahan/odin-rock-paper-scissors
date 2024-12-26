@@ -6,8 +6,15 @@
     <title>rock paper scissors</title>
 </head>
 <body>
+    <button id="rock">rock</button>
+    <button id="paper">paper</button>
+    <button id="scissors">scissors</button>
+    <div id="result"></div>
+    <div id="score"></div>
+    <div id="winner"></div>
+
     <script>
-        // prompt("say somthing")
+       
         console.log("hello alaa")
         let humanScore = 0
         let computerScore = 0
@@ -26,43 +33,79 @@
             let humanChoice = prompt("enter your choice : rock paper scissors")
             return humanChoice
         }
-
-
+        let result = document.querySelector("#result")
+        let score= document.querySelector("#score")
+        let winner = document.querySelector("#winner")
         function playRound(humanChoice, computerChoice) {
+          
          console.log(humanChoice)
             if(humanChoice == computerChoice){
-                return "it is tie"
+                 result.textContent = "it is tie"
+                 score.textContent= `computer: ${computerScore} ; human: ${humanScore}`
             }else if (humanChoice == "rock" && computerChoice == "paper"    ||
                       humanChoice == "scissors" && computerChoice == "rock" ||
                       humanChoice == "paper" && computerChoice == "scissors"  
             ){
                 computerScore++;
-                return `You lose! ${computerChoice} beats  ${humanChoice}`
+                 result.textContent = `You lose! ${computerChoice} beats  ${humanChoice}`
+                 score.textContent= `computer: ${computerScore} ; human: ${humanScore}`
                 
             } else {
                 humanScore++;
-                return `You win! ${humanChoice} beats ${computerChoice}`
+                result.textContent = `You win! ${humanChoice} beats ${computerChoice}`
+                score.textContent= `computer: ${computerScore} ; human: ${humanScore}`
+                
                 
             }
 
+            if(computerScore == 5){
+            winner.textContent = " computer is winner !!"
+
+            paper.removeEventListener("click",getPaper);
+
+        rock.removeEventListener("click",getRock);
+
+        scissors.removeEventListener("click", getScissors);
+            }
+
+            if(humanScore == 5){
+            winner.textContent = "you win!!"
+
+            paper.removeEventListener("click", getPaper);
+
+        rock.removeEventListener("click", getRock);
+
+        scissors.removeEventListener("click", getScissors);
+            }
+
+        }
+        let rock = document.querySelector("#rock");
+        let paper = document.querySelector("#paper");
+        let scissors = document.querySelector("#scissors");
+
+        function getPaper(){
+            playRound("paper", getComputerChoice()) 
         }
 
+        function getRock(){
+            playRound("rock1", getComputerChoice()) 
+        }
+
+        function getScissors(){
+            playRound("scissors", getComputerChoice()) 
+        }
+
+        paper.addEventListener("click",getPaper);
+
+        rock.addEventListener("click", getRock);
+
+        scissors.addEventListener("click", getScissors);
+     
 
 
-        function playGame() {
 
-            let rounds = 0
-            while (rounds < 5){
-                rounds++
-                const humanSelection = getHumanChoice();
-                const computerSelection = getComputerChoice();
-                console.log(playRound(humanSelection, computerSelection)) ;
-            }
-            console.log("computer score :" +computerScore)
-            console.log("human score:"+ humanScore)
-    }
-
-    playGame()
     </script>
 </body>
 </html>
+
+<!-- uncle same -->
